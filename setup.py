@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+""" setup.py """
 # pylint: disable=missing-docstring
 # Note: To use the 'upload' functionality of this file, you must:
 #   $ pipenv install twine --dev
@@ -14,12 +14,16 @@ from setuptools import find_packages, setup, Command
 
 # Package meta-data.
 NAME = 'text_colors'
-DESCRIPTION = "The obligatory ANSI text colors implementation. I would feel left out of the cool club if I didn't do this ate least once."
+DESCRIPTION = "The obligatory ANSI text colors implementation."
+KEYWORDS_LIST = 'ANSI color terminal iterm2 linux macos cli colorful rainbow'
 URL = 'https://github.com/skeptycal/'
 EMAIL = 'skeptycal@gmail.com'
 AUTHOR = 'Michael Treanor'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.8.0'
+VERSION = '0.8.3'
+README_FILENAME = 'README.md'
+
+SCRIPTS_LIST = ['text_colors.py']
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -29,6 +33,13 @@ REQUIRED = [
 # What packages are optional?
 EXTRAS = {
     # 'fancy feature': ['django'],
+}
+
+PACKAGE_DATA = {
+    # If any package contains *.txt or *.rst files, include them:
+    '': ['*.md', '*.txt', '*.rst', '*.yml', '*.yaml', '*.cfg'],
+    # And include any *.msg files found in the 'hello' package, too:
+    # 'hello': ['*.msg'],
 }
 
 # The rest you shouldn't have to touch too much :)
@@ -42,7 +53,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 # Import the README and use it as the long-description.
 # Note: this will only work if 'README.md' is present in your MANIFEST.in file!
 try:
-    with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+    with io.open(os.path.join(here, README_FILENAME), encoding='utf-8') as f:
         long_description = '\n' + f.read()
 except FileNotFoundError:
     long_description = DESCRIPTION
@@ -97,26 +108,49 @@ class UploadCommand(Command):
 
 # Where the magic happens:
 setup(
+    # * Demographic Information
     name=NAME,
     version=about['__version__'],
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
+    keywords=KEYWORDS_LIST,
     author=AUTHOR,
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
+
+    # * Package Contents
+    scripts=SCRIPTS_LIST,
+    include_package_data=True,
+    package_data=PACKAGE_DATA,
     packages=find_packages(
         exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
-    # py_modules=['mypackage'],
+    # py_modules=['text_colors.py'],
 
+    # * Options for packaging:
+    # packages=find_packages('src'),  # include all packages under src
+    # package_dir={'':'src'},   # tell distutils packages are under src
+
+    # package_data={
+    # If any package contains *.txt files, include them:
+    # '': ['*.txt'],
+    # And include any *.dat files found in the 'data' subdirectory
+    # of the 'mypkg' package, also:
+    # 'mypkg': ['data/*.dat'],
+    # }
+    # # ...but exclude README.txt from all packages
+    # exclude_package_data={'': ['README.txt']},
+
+    # * Build Options
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
     install_requires=REQUIRED,
     extras_require=EXTRAS,
-    include_package_data=True,
+
+    # * License Information
     license='MIT',
     classifiers=[
         # Trove classifiers
