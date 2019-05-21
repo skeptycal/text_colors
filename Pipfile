@@ -8,6 +8,7 @@ pylint = "*"
 autopep8 = "*"
 flake8 = "*"
 pep8 = "*"
+twine = "*"
 
 [requires]
 python_version = "3.6"
