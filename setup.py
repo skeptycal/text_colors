@@ -5,6 +5,8 @@
 # Note: To use the 'upload' functionality of this file, you must:
 #   $ pipenv install twine --dev
 
+# https://setuptools.readthedocs.io/en/latest/setuptools.html
+
 import io
 import os
 import sys
@@ -93,7 +95,8 @@ class UploadCommand(Command):
             pass
 
         self.status("Building Source and Wheel (universal) distribution…")
-        os.system("{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
+        os.system(
+            "{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
 
         self.status("Uploading the package to PyPI via Twine…")
         os.system("twine upload dist/*")
@@ -122,7 +125,8 @@ setup(
     scripts=SCRIPTS_LIST,
     include_package_data=True,
     package_data=PACKAGE_DATA,
-    packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+    packages=find_packages(
+        exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['text_colors.py'],
     # * Options for packaging:
