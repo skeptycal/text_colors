@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
-""" Module text_colors.py Version 0.8.0 """
+""" text_colors version 0.8.3 """
 
+
+import locale
 import random
 import os
 import sys
 import time
-from typing import Dict, List
+from typing import Dict
 
-def py_shell()->str:
+
+def py_shell() -> str:
     """ Returns string containing current python shell name. """
     PY_ENV = os.environ
     PY_BASE = os.path.basename(PY_ENV["_"])
 
-    shell:str = ''
+    shell: str = ""
 
     if "JPY_PARENT_PID" in PY_ENV:
         shell = "ipython notebook"
@@ -24,6 +27,7 @@ def py_shell()->str:
     else:
         try:
             import platform
+
             shell = platform.python_implementation()
         except ImportError:
             pass
@@ -32,7 +36,7 @@ def py_shell()->str:
 
 
 """ Initialize constants, variables, strings, etc..."""
-chart="""ANSI Effects Chart
+chart = """ANSI Effects Chart
     <code>
     ╔══════════╦════════════════════════════════╦═════════════════════════════════════════════════════════════════════════╗
     ║  Code    ║             Effect             ║                                   Note                                  ║
@@ -81,10 +85,10 @@ chart="""ANSI Effects Chart
     </code>
     """
 
-import locale
 
 locale.setlocale(locale.LC_ALL, "")
 CODE = locale.getpreferredencoding()
+VERSION = "text_colors version 0.8.3"
 
 FG_DICT: Dict[str, str] = {
     # The first 11 codes are just favorites I picked.
@@ -178,41 +182,41 @@ FLAGS_DICT: Dict[str, str] = {
     "UNDER": "\u001b[4m",  # Underline
     # "BLINK": '\u001b[5m',            # Slow Blink            < 150/min
     # "FBLINK": '\u001b[6m',           # Fast Blink            NWS
-    "REVERSE": "\u001b[7m",  # Swap Foreground and Background Colors
-    # "CONCEAL": '\u001b[8m',          # Conceal               NWS
-    # "STRIKE": '\u001b[9m',           # Strike-through        Crossed-out
-    # "FONT0": '\u001b[10m',           # Main Font
-    # "FONT1": '\u001b[11m',           # Alternate Font n-10   NWS
-    # "FONT2": '\u001b[12m',           # Alternate Font n-10   NWS
-    # "FONT3": '\u001b[13m',           # Alternate Font n-10   NWS
-    # "FONT4": '\u001b[14m',           # Alternate Font n-10   NWS
-    # "FONT5": '\u001b[15m',           # Alternate Font n-10   NWS
-    # "FONT6": '\u001b[16m',           # Alternate Font n-10   NWS
-    # "FONT7": '\u001b[17m',           # Alternate Font n-10   NWS
-    # "FONT8": '\u001b[18m',           # Alternate Font n-10   NWS
-    # "FONT9": '\u001b[19m',           # Alternate Font n-10   NWS
-    # "FRAKTUR": '\u001b[20m',         # WTF?                 hardly ever supported
-    # "DUNDER": '\u001b[21m',          # Double Underline      likely 'BOLD OFF'
-    # "NORM": '\u001b[22m',            # Normal Weight
-    # "NO_IT": '\u001b[23m',           # Normal Angle          Italic off
-    # "NO_UND": '\u001b[24m',          # Normal Underline      Underline off
-    # "NOBLINK": '\u001b[25m',         # Blink Off
-    # "WTF": '\u001b[26m',             # Undefined ... no definition found ????
-    # "NOTINV": '\u001b[27m',          # Normal Inversion      Reverse off
-    # "REVEAL": '\u001b[28m',          # Conceal Off
-    # "NO_STRIKE": '\u001b[29m',       # Strikethrough off
-    # "FRAME": '\u001b[51m',           # Framed
-    # "CIRCLE": '\u001b[52m',          # Encircled
-    # "OVER": '\u001b[53m',            # Overlined
-    # "NO_FRAME": '\u001b[54m',        # Frame/Circle Off
-    # "NO_OVER": '\u001b[55m',         # Overline OFF
-    # "ID_UNDER": '\u001b[60m',        # ideogram underline
-    # "ID_DOUB": '\u001b[61m',         # ideogram double underline
-    # "ID_OVER": '\u001b[62m',         # ideogram overline
-    # "ID_DOVE": '\u001b[63m',         # ideogram double overline
-    # "ID_STRESS": '\u001b[64m',       # ideogram stress marking
-    # "ID_OFF": '\u001b[65m',          # ideogram attributes off
-}
+    "REVERSE": "\u001b[7m"}  # , Swap Foreground and Background Colors
+# "CONCEAL": '\u001b[8m',          # Conceal               NWS
+# "STRIKE": '\u001b[9m',           # Strike-through        Crossed-out
+# "FONT0": '\u001b[10m',           # Main Font
+# "FONT1": '\u001b[11m',           # Alternate Font n-10   NWS
+# "FONT2": '\u001b[12m',           # Alternate Font n-10   NWS
+# "FONT3": '\u001b[13m',           # Alternate Font n-10   NWS
+# "FONT4": '\u001b[14m',           # Alternate Font n-10   NWS
+# "FONT5": '\u001b[15m',           # Alternate Font n-10   NWS
+# "FONT6": '\u001b[16m',           # Alternate Font n-10   NWS
+# "FONT7": '\u001b[17m',           # Alternate Font n-10   NWS
+# "FONT8": '\u001b[18m',           # Alternate Font n-10   NWS
+# "FONT9": '\u001b[19m',           # Alternate Font n-10   NWS
+# "FRAKTUR": '\u001b[20m',         # WTF?                 hardly ever supported
+# "DUNDER": '\u001b[21m',          # Double Underline      likely 'BOLD OFF'
+# "NORM": '\u001b[22m',            # Normal Weight
+# "NO_IT": '\u001b[23m',           # Normal Angle          Italic off
+# "NO_UND": '\u001b[24m',          # Normal Underline      Underline off
+# "NOBLINK": '\u001b[25m',         # Blink Off
+# "WTF": '\u001b[26m',             # Undefined ... no definition found ????
+# "NOTINV": '\u001b[27m',          # Normal Inversion      Reverse off
+# "REVEAL": '\u001b[28m',          # Conceal Off
+# "NO_STRIKE": '\u001b[29m',       # Strikethrough off
+# "FRAME": '\u001b[51m',           # Framed
+# "CIRCLE": '\u001b[52m',          # Encircled
+# "OVER": '\u001b[53m',            # Overlined
+# "NO_FRAME": '\u001b[54m',        # Frame/Circle Off
+# "NO_OVER": '\u001b[55m',         # Overline OFF
+# "ID_UNDER": '\u001b[60m',        # ideogram underline
+# "ID_DOUB": '\u001b[61m',         # ideogram double underline
+# "ID_OVER": '\u001b[62m',         # ideogram overline
+# "ID_DOVE": '\u001b[63m',         # ideogram double overline
+# "ID_STRESS": '\u001b[64m',       # ideogram stress marking
+# "ID_OFF": '\u001b[65m',          # ideogram attributes off
+
 
 """ # Fills in the 256 set color codes
     #   => (0 to 231) colors in the format 'COLOR133'
@@ -246,29 +250,32 @@ DEFAULT_FLAGS: str = "RESET"
 
 """ End Initialization Section """
 
+
 def color_encode(
         fg_color: str = DEFAULT_FG_COLOR,
         bg_color: str = DEFAULT_BG_COLOR,
         flags_color: str = "NONE",
-    ) -> str:
-        """Function - color_encode: Returns encoded ANSI text string from components.
-            Keyword Arguments:
-                    fg_color {str} - ANSI foreground color {DEFAULT_FG_COLOR}
-                    bg_color {str} - ANSI background color {DEFAULT_BG_COLOR}
-                    flags_color {str} - ANSI format codes
-            Returns:
-                str - printable escaped ANSI text formatting string
-            """
-        s: str = ""
-        if ENABLE_COLOR:
-            s += FG_DICT[fg_color]
-            s += BG_DICT[bg_color]
-            s += FLAGS_DICT[flags_color]
-        return s
+) -> str:
+    """Function - color_encode: Returns encoded ANSI text string from components.
+        Keyword Arguments:
+                fg_color {str} - ANSI foreground color {DEFAULT_FG_COLOR}
+                bg_color {str} - ANSI background color {DEFAULT_BG_COLOR}
+                flags_color {str} - ANSI format codes
+        Returns:
+            str - printable escaped ANSI text formatting string
+        """
+    s: str = ""
+    if ENABLE_COLOR:
+        s += FG_DICT[fg_color]
+        s += BG_DICT[bg_color]
+        s += FLAGS_DICT[flags_color]
+    return s
+
 
 """ DEFAULT_ENCODE: User Default Color Code: set this to your favorite
     default and normal prints will use this color code """
-DEFAULT_ENCODE: str = color_encode(DEFAULT_FG_COLOR, DEFAULT_BG_COLOR, DEFAULT_FLAGS)
+DEFAULT_ENCODE: str = color_encode(
+    DEFAULT_FG_COLOR, DEFAULT_BG_COLOR, DEFAULT_FLAGS)
 """ THIS VARIABLE CONTROLS HOW THE COLOR CODES ARE RESET AFTER PRINTING
     Set to '' to have no color reset in each print statement.
     Set to DEFAULT_ENCODE to return to normalself.
@@ -278,8 +285,7 @@ STICKY_ENCODE: str = DEFAULT_ENCODE
 RESET_ENCODE: str = color_encode("DEF_FG", "DEF_BG", "RESET")
 
 
-def color_print(color_code: str = DEFAULT_ENCODE,
-                *args: tuple, **kwargs: dict) -> int:
+def color_print(color_code: str, *args: tuple, **kwargs: dict) -> int:
     """ Function color_print: Print using ANSI color codes
 
         Arguments:
@@ -298,6 +304,7 @@ def color_print(color_code: str = DEFAULT_ENCODE,
         return 1
     return 0
 
+
 def color_gradient(color_1: int, color_2: int, print_string: str) -> int:
     """Print <print_string> using a calculated ANSI color gradient
             that changes evenly and gradually between color_1 and color_2.
@@ -310,18 +317,20 @@ def color_gradient(color_1: int, color_2: int, print_string: str) -> int:
         Returns:
             int: 0 for success; > 0 for error code """
     if ENABLE_COLOR and len(print_string) >= 4:
+        result: str = ''
         # make sure color_2 is the larger number
         if color_1 > color_2:
             color_1, color_2 = color_2, color_1
         try:
             gradient_slope: float = (color_2 - color_1) / len(print_string)
-            for i in range(len(print_string)):
+            for i, _ in enumerate(print_string):
                 color_code = "COLOR" + str(int(color_1 + i * gradient_slope))
-                result = color_encode(color_code) + print_string[i]
+                result += color_encode(color_code) + print_string[i]
             print(result)
         except TypeError:
             return 1
     return 0
+
 
 def color_cycle(color_1: int, print_string: str) -> int:
     """Print <print_string> by cycling through the colors starting at <color_1>.
@@ -333,18 +342,18 @@ def color_cycle(color_1: int, print_string: str) -> int:
         Returns:
             int: 0 for success; > 0 for error code """
     if ENABLE_COLOR:
-        color_1
         try:
-            for ind, c in enumerate(print_string):
+            for _, c in enumerate(print_string):
                 color_1 += 1
                 if color_1 < 1 or color_1 > 230:
                     color_1 = 1
                 color_code = "COLOR" + str(color_1)
                 print(color_encode(color_code), str(c), sep="", end="")
-            print(DEFAULT_ENCODE, sep="", end="")
-        except RuntimeError or IndexError:
+            print(DEFAULT_ENCODE, ' ', sep="", end="")
+        except (RuntimeError, IndexError):
             return 1
     return 0
+
 
 def loading(count):
     """ Demo - Print <count> text progress bars.
@@ -357,10 +366,7 @@ def loading(count):
         Returns:
             int: 0 for success; > 0 for error code """
     width: int = 0
-    i: int = 0
-    v: int = 0
-    x: int = 0
-    w_string: str = ''
+    w_string: str = ""
     all_progress = [0] * count
     sys.stdout.write("\n" * count)  # Make sure we have space to draw the bars
     while any(x < 100 for x in all_progress):
@@ -376,19 +382,21 @@ def loading(count):
         for progress in all_progress:
             width = int(progress / 4)
             w_string = "#" * width
-            pad_string = ' ' * (25 - width)
+            pad_string = " " * (25 - width)
             if len(w_string) >= 5:
-                pad_string = ' ' * (25 - width)
+                pad_string = " " * (25 - width)
                 pad_string = "|" + w_string + pad_string + "]"
             else:
-                pad_string = ' ' * 21
+                pad_string = " " * 21
                 pad_string = "|" + w_string + pad_string + "]"
             color_cycle(124, pad_string)
     return 0
 
+
 def fg_samples():
+    """ Foreground color samples """
     i: int = 0
-    for key in FG_DICT:
+    for k in FG_DICT:
         if i < 32:
             if not i % 8:
                 print()
@@ -396,17 +404,19 @@ def fg_samples():
             print()
         i += 1
         color_print(
-            color_encode(key, DEFAULT_BG_COLOR),
-            key.replace("OLOR", ""),
+            color_encode(k, DEFAULT_BG_COLOR),
+            k.replace("OLOR", ""),
             " ",
             sep="",
             end="",
         )
     print()
+
 
 def bg_samples():
+    """ Background color samples """
     i = 0
-    for key in BG_DICT:
+    for k in BG_DICT:
         if i < 32:
             if not i % 8:
                 print()
@@ -414,24 +424,26 @@ def bg_samples():
             print()
         i += 1
         color_print(
-            color_encode(DEFAULT_FG_COLOR, key),
-            key.replace("OLOR", ""),
+            color_encode(DEFAULT_FG_COLOR, k),
+            k.replace("OLOR", ""),
             " ",
             sep="",
             end="",
         )
     print()
 
+
 def flags_samples():
+    """ ANSI Flags samples """
     print()
     i: int = 0
-    for key in FLAGS_DICT:
+    for k in FLAGS_DICT:
         i += 1
         color_print(
-            color_encode("BWHITE", "PURPLEHAZE", key),
+            color_encode("BWHITE", "PURPLEHAZE", k),
             i,
             " : ",
-            str(key),
+            str(k),
             "  \t Now is the time for all good men to come to the aid of their country.",
             RESET_ENCODE,
             sep="",
@@ -448,15 +460,18 @@ def flags_samples():
         "Cycle!!!  \t Now is the time for all good men to come to the aid of their country. Now is the time for all good men to come to the aid of their country. Now is the time for all good men to come to the aid of their country. Now is the time for all good men to come to the aid of their country.\n",
     )
     print()
-    if ENABLE_COLOR:
-        loading(5)
-    print()
+    # if ENABLE_COLOR:
+    #     loading(5)
+    # print()
     color_print(DEFAULT_ENCODE)
-    color_print(color_encode("BWHITE", "PURPLEHAZE", "ITALIC"), "TESTS COMPLETE ...")
+    color_print(color_encode("BWHITE", "PURPLEHAZE",
+                             "ITALIC"), "TESTS COMPLETE ...")
+
 
 if __name__ == "__main__":
     # TEST SAMPLES to use if script is run from the command lines
-    usage="""text_colors - the obligatory ANSI color module (version 0.8.0)
+    usage = (
+        VERSION + """
 
 author    - Michael Treanor  <skeptycal@gmail.com>
 copyright - 2019 (c) Michael Treanor
@@ -469,25 +484,29 @@ Usage: text_colors {demo|version|help}
       demo, -d, --demo        -- install and initialize
       version, -v, --version  -- display version information
       help, -h, --help        -- display usage and information"""
+    )
 
     if len(sys.argv) < 2:
-        color_cycle(42, usage)
+        # color_cycle(42, usage)
+        color_gradient(42, 222, usage)
     else:
         arg1: str = sys.argv[1].lower()
-        if arg1 in ['version','-v','--version']:
-            color_cycle(88, version)
-        elif arg1 in ['help','-h','--help']:
-            color_print(color_encode("BWHITE", "PURPLEHAZE", "ITALIC"), version)
+        if arg1 in ["version", "-v", "--version"]:
+            color_cycle(88, VERSION)
+        elif arg1 in ["help", "-h", "--help"]:
+            color_print(color_encode(
+                "BWHITE", "PURPLEHAZE", "ITALIC"), VERSION)
             print()
             color_cycle(88, chart)
-        elif arg1 in ['demo','-d','--demo']:
+        elif arg1 in ["demo", "-d", "--demo"]:
             fg_samples()
             bg_samples()
             flags_samples()
         else:
-            color_cycle(42,usage)
+            color_gradient(42, 222, usage)
+            # color_cycle(42, usage)
 
-print('\n\n')
+print("\n\n")
 
 """ Resources:
     https://stackoverflow.com/questions/287871/print-in-terminal-with-colors
