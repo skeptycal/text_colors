@@ -1,21 +1,6 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 """ Module text_colors.py Version 0.8.0 """
-version="""Module text_colors.py Version 0.8.0
-
-    author          Michael Treanor  <skeptycal@gmail.com>
-    copyright       (c) 2019 Michael Treanor
-    license         MIT <https://opensource.org/licenses/MIT>
-    link            http://www.github.com/skeptycal
-
-    The obligatory Python training module to add CLI ANSI color and other escape code formatting features. References are at the end of the file.
-
-    (There seems to be a tradition, in the spirit of "Hello World," to write some code that makes use of ANSI codes to color the CLI output. Since I have been working with BASH scripts, and now PHP / Python, it seems like a fun thing to do!)
-
-    =>  TEST INFO: (last) 02-13-2019, macOS (10.14.3 - 18D109)
-        Python 3.6.7 (v3.6.7:6ec5cf24b7, Oct 20 2018, 03:02:14)
-        [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)]
-    """
 
 import random
 import os
@@ -266,7 +251,7 @@ def color_encode(
         bg_color: str = DEFAULT_BG_COLOR,
         flags_color: str = "NONE",
     ) -> str:
-        """Function - color_encode: Encode ANSI text string from components.
+        """Function - color_encode: Returns encoded ANSI text string from components.
             Keyword Arguments:
                     fg_color {str} - ANSI foreground color {DEFAULT_FG_COLOR}
                     bg_color {str} - ANSI background color {DEFAULT_BG_COLOR}
@@ -313,7 +298,7 @@ def color_print(color_code: str = DEFAULT_ENCODE,
         return 1
     return 0
 
-def print_color_gradient(color_1: int, color_2: int, print_string: str) -> int:
+def color_gradient(color_1: int, color_2: int, print_string: str) -> int:
     """Print <print_string> using a calculated ANSI color gradient
             that changes evenly and gradually between color_1 and color_2.
 
@@ -452,7 +437,7 @@ def flags_samples():
             sep="",
         )
     print()
-    print_color_gradient(
+    color_gradient(
         130,
         144,
         "Gradient!!!  \t Now is the time for all good men to come to the aid of their country.\n",
@@ -485,8 +470,8 @@ Usage: text_colors {demo|version|help}
       version, -v, --version  -- display version information
       help, -h, --help        -- display usage and information"""
 
-    if len(sys.argv) < 1:
-        print(usage)
+    if len(sys.argv) < 2:
+        color_cycle(42, usage)
     else:
         arg1: str = sys.argv[1].lower()
         if arg1 in ['version','-v','--version']:
@@ -499,7 +484,10 @@ Usage: text_colors {demo|version|help}
             fg_samples()
             bg_samples()
             flags_samples()
+        else:
+            color_cycle(42,usage)
 
+print('\n\n')
 
 """ Resources:
     https://stackoverflow.com/questions/287871/print-in-terminal-with-colors
