@@ -18,7 +18,7 @@ from setuptools import find_packages, setup, Command
 NAME = "text_colors"
 DESCRIPTION = "The obligatory ANSI text colors implementation."
 KEYWORDS_LIST = "ANSI color terminal iterm2 linux macos cli colorful rainbow"
-URL = "https://github.com/skeptycal/"
+URL = "https://github.com/skeptycal/text_colors"
 EMAIL = "skeptycal@gmail.com"
 AUTHOR = "Michael Treanor"
 REQUIRES_PYTHON = ">=3.6.0"

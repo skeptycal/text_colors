@@ -6,16 +6,18 @@
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/skeptycal.svg?label=%40skeptycal&style=social) ![GitHub followers](https://img.shields.io/github/followers/skeptycal.svg?style=social)
 
-Last update: 05-21-2019 | 23:15:01
+Last update: 05-21-2019 | 23:24:03
 
 ---
 
-### The obligatory Python training module to add CLI ANSI color and other escape code formatting features.
+### The obligatory Python training module to add CLI ANSI color
+and other escape code formatting features.
 
 ```bash
 
 ###############################################################################
-# text_colors : The obligatory Python training module to add CLI ANSI color and other escape code formatting features. (version 0.8.3)
+# text_colors : The obligatory Python training module to add CLI ANSI color
+and other escape code formatting features. (version 0.8.3)
 #
 # author    - Michael Treanor  <skeptycal@gmail.com>
 # copyright - 2019 (c) Michael Treanor
@@ -31,7 +33,10 @@ Last update: 05-21-2019 | 23:15:01
 
 ###############################################################################
 #
-# (There seems to be a tradition, in the spirit of 'Hello World,' to write some code that makes use of ANSI codes to color the CLI output. Since I have been working with BASH scripts, and now PHP / Python, it seems like a fun thing to do!)
+# (There seems to be a tradition, in the spirit of 'Hello World,' to write some
+# code that makes use of ANSI codes to color the CLI output.
+# Since I have been working with BASH scripts lately, and working with Python
+# it seems like a fun thing to do!)
 #
 # Importing this module gives access to the following:
 #   - py_shell() - Returns string containing current python shell name.
@@ -57,7 +62,6 @@ Last update: 05-21-2019 | 23:15:01
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
-├── README.md2
 ├── __init__.py
 ├── bak
 │   ├── README.md.bak
@@ -88,5 +92,5 @@ Last update: 05-21-2019 | 23:15:01
 │   └── top_level.txt
 └── text_colors.py
 
-9 directories, 25 files
+9 directories, 24 files
 ```
