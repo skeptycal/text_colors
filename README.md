@@ -1,8 +1,17 @@
 # text_colors version 0.8.3
-[![Netlify Status](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)](https://app.netlify.com/sites/mystifying-keller-ab5658/deploys)  ![Azure DevOps builds](https://img.shields.io/azure-devops/build/skeptycal0275/skeptycal/1.svg?color=blue&label=Azure%20DevOps&style=popout) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout) ![Twitter Follow](https://img.shields.io/twitter/follow/skeptycal.svg?label=%40skeptycal&style=social) ![GitHub followers](https://img.shields.io/github/followers/skeptycal.svg?style=social)
-Last update: 05-21-2019 | 11:49:05
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)](https://app.netlify.com/sites/mystifying-keller-ab5658/deploys)
+
+![Azure DevOps builds](https://img.shields.io/azure-devops/build/skeptycal0275/skeptycal/1.svg?color=blue&label=Azure%20DevOps&style=popout) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout)
+
+![Twitter Follow](https://img.shields.io/twitter/follow/skeptycal.svg?label=%40skeptycal&style=social) ![GitHub followers](https://img.shields.io/github/followers/skeptycal.svg?style=social)
+
+Last update: 05-21-2019 | 23:15:01
+
 ---
-## The obligatory Python training module to add CLI ANSI color and other escape code formatting features.
+
+### The obligatory Python training module to add CLI ANSI color and other escape code formatting features.
+
 ```bash
 
 ###############################################################################
@@ -39,21 +48,45 @@ Last update: 05-21-2019 | 11:49:05
 
 
 ```
+
 ---
+
 ```bash
 .
+├── MANIFEST.in
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
+├── README.md2
+├── __init__.py
 ├── bak
 │   ├── README.md.bak
 │   ├── codecov.yml.bak
 │   ├── pipfile.bak
 │   └── requirements.txt.bak
+├── build
+│   ├── bdist.macosx-10.14-x86_64
+│   ├── bdist.macosx-10.9-x86_64
+│   ├── scripts-3.6
+│   │   └── text_colors.py
+│   ├── scripts-3.7
+│   │   └── text_colors.py
+│   └── scripts-3.8
+│       └── text_colors.py
 ├── codecov.yml
+├── dev-requirements.txt
+├── dist
+│   ├── text_colors-0.8.3-py3-none-any.whl
+│   ├── text_colors-0.8.3-py3.7.egg
+│   └── text_colors-0.8.3.tar.gz
 ├── requirements.txt
 ├── setup.py
+├── text_colors.egg-info
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   └── top_level.txt
 └── text_colors.py
 
-1 directory, 11 files
+9 directories, 25 files
 ```
