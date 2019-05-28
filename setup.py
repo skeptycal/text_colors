@@ -25,7 +25,9 @@ REQUIRES_PYTHON = ">=3.6.0"
 VERSION = "0.8.3"
 README_FILENAME = "README.md"
 
-SCRIPTS_LIST = ["text_colors.py"]
+SCRIPTS_LIST = [
+    # ''
+]
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -96,7 +98,8 @@ class UploadCommand(Command):
 
         self.status("Building Source and Wheel (universal) distribution…")
         os.system(
-            "{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
+            "{0} setup.py sdist bdist_wheel --universal".
+            format(sys.executable))
 
         self.status("Uploading the package to PyPI via Twine…")
         os.system("twine upload dist/*")

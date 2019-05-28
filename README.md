@@ -10,8 +10,28 @@ Last update: 05-21-2019 | 23:24:03
 
 ---
 
-### The obligatory Python training module to add CLI ANSI color
-and other escape code formatting features.
+### The obligatory Python module to add CLI ANSI color and other escape code formatting features.
+
+Behold, the power of ANSI colors!
+
+``` {.sourceCode .python}
+>>> import text_colors
+>>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+>>> r.status_code
+200
+>>> r.headers['content-type']
+'application/json; charset=utf8'
+>>> r.encoding
+'utf-8'
+>>> r.text
+u'{"type":"User"...'
+>>> r.json()
+{u'disk_usage': 368627, u'private_gists': 484, ...}
+```
+
+## Installation
+
+
 
 ```bash
 
