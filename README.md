@@ -14,7 +14,7 @@ Last update: 05-21-2019 | 23:24:03
 
 Behold, the power of ANSI colors!
 
-``` {.sourceCode .python}
+```{.sourceCode .python}
 >>> import text_colors
 >>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
 >>> r.status_code
@@ -30,8 +30,6 @@ u'{"type":"User"...'
 ```
 
 ## Installation
-
-
 
 ```bash
 
