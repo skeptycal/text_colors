@@ -2,23 +2,55 @@
 # -*- encoding: utf-8 -*-
 """ text_colors version 0.8.3
 
-    The obligatory ANSI text colors implementation. Requires Python 3+ """
+    The obligatory ANSI text colors implementation.
+    Requires Python 3.6+
+    """
 
 import locale
 import os
 import sys
-from typing import Dict
+from typing import List, Dict
+# from py_shell
+
+
+def py_path() -> List:
+    """ Return list of current python path elements. """
+    import os
+    try:
+        return os.environ['PYTHONPATH'].split(os.pathsep)
+    except KeyError:
+        return []
+
+
+def py3up() -> bool:
+    """ Return True if 'Python >= 3' else False
+
+        If you want to detect pre-Python 3 and don't want to import anything...
+        ... you can (ab)use list comprehension scoping changes
+    """
+    # https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script/35294211
+    # https://stackoverflow.com/a/52825819/9878098
+    return (lambda x: [x for x in [False]] and None or x)(True)
+
+
+def pyver() -> str:
+    """ Returns string with python version number in major.minor.micro format.
+            (e.g. 3.7.3  or  2.7.12)
+    """
+    return '.'.join(str(i) for i in __import__('sys').version_info[:3])
 
 
 def py_shell() -> str:
     """ Returns string containing current python shell name. """
-    PY_ENV = os.environ
-    PY_BASE = os.path.basename(PY_ENV["_"])
+    import os
 
     shell: str = ""
-
+    PY_ENV = os.environ
+    PY_BASE = os.path.basename(PY_ENV["_"])
     if "JPY_PARENT_PID" in PY_ENV:
         shell = "ipython notebook"
+    elif "pypy" in PY_ENV:
+        shell = "pypy"
     elif "jupyter-notebook" in PY_BASE:
         shell = "jupyter notebook"
     elif "ipython" in PY_BASE:
@@ -171,51 +203,54 @@ BG_DICT: Dict[str, str] = {
 
 # NWS = 'not wide supported'
 FLAGS_DICT: Dict[str, str] = {
-    # ANSI STANDARD ATTRIBUTES - NOT ALL WIDELY SUPPORTED
-    # Most do not work on my MacBook ... commented them out
+    # ANSI STANDARD ATTRIBUTES
+    #   NWS = NOT WIDELY SUPPORTED
+    # Most do not work on my 2015 MacBook, ITerm2 ... commented them out
     "NONE": "",
-    "RESET": "\u001b[0m",  # Reset / Normal        all attributes off
-    "BOLD": "\u001b[1m",  # Bold
-    "DIM": "\u001b[2m",  # Dim                   NWS
-    "ITALIC": "\u001b[3m",  # Italic                Sometimes Inverse
-    "UNDER": "\u001b[4m",  # Underline
+    "RESET": "\u001b[0m",              # Reset / Normal        all off
+    "BOLD": "\u001b[1m",               # Bold
+    "DIM": "\u001b[2m",                # Dim                   NWS
+    # Italic                Sometimes Inverse
+    "ITALIC": "\u001b[3m",
+    "UNDER": "\u001b[4m",              # Underline
     # "BLINK": '\u001b[5m',            # Slow Blink            < 150/min
     # "FBLINK": '\u001b[6m',           # Fast Blink            NWS
-    "REVERSE": "\u001b[7m"}  # , Swap Foreground and Background Colors
-# "CONCEAL": '\u001b[8m',          # Conceal               NWS
-# "STRIKE": '\u001b[9m',           # Strike-through        Crossed-out
-# "FONT0": '\u001b[10m',           # Main Font
-# "FONT1": '\u001b[11m',           # Alternate Font n-10   NWS
-# "FONT2": '\u001b[12m',           # Alternate Font n-10   NWS
-# "FONT3": '\u001b[13m',           # Alternate Font n-10   NWS
-# "FONT4": '\u001b[14m',           # Alternate Font n-10   NWS
-# "FONT5": '\u001b[15m',           # Alternate Font n-10   NWS
-# "FONT6": '\u001b[16m',           # Alternate Font n-10   NWS
-# "FONT7": '\u001b[17m',           # Alternate Font n-10   NWS
-# "FONT8": '\u001b[18m',           # Alternate Font n-10   NWS
-# "FONT9": '\u001b[19m',           # Alternate Font n-10   NWS
-# "FRAKTUR": '\u001b[20m',         # WTF?                 hardly ever supported
-# "DUNDER": '\u001b[21m',          # Double Underline      likely 'BOLD OFF'
-# "NORM": '\u001b[22m',            # Normal Weight
-# "NO_IT": '\u001b[23m',           # Normal Angle          Italic off
-# "NO_UND": '\u001b[24m',          # Normal Underline      Underline off
-# "NOBLINK": '\u001b[25m',         # Blink Off
-# "WTF": '\u001b[26m',             # Undefined ... no definition found ????
-# "NOTINV": '\u001b[27m',          # Normal Inversion      Reverse off
-# "REVEAL": '\u001b[28m',          # Conceal Off
-# "NO_STRIKE": '\u001b[29m',       # Strikethrough off
-# "FRAME": '\u001b[51m',           # Framed
-# "CIRCLE": '\u001b[52m',          # Encircled
-# "OVER": '\u001b[53m',            # Overlined
-# "NO_FRAME": '\u001b[54m',        # Frame/Circle Off
-# "NO_OVER": '\u001b[55m',         # Overline OFF
-# "ID_UNDER": '\u001b[60m',        # ideogram underline
-# "ID_DOUB": '\u001b[61m',         # ideogram double underline
-# "ID_OVER": '\u001b[62m',         # ideogram overline
-# "ID_DOVE": '\u001b[63m',         # ideogram double overline
-# "ID_STRESS": '\u001b[64m',       # ideogram stress marking
-# "ID_OFF": '\u001b[65m',          # ideogram attributes off
-
+    # Inverse , Swap Foreground and Background Colors
+    "REVERSE": "\u001b[7m"
+    # "CONCEAL": '\u001b[8m',          # Conceal               NWS
+    # "STRIKE": '\u001b[9m',           # Strike-through        Crossed-out
+    # "FONT0": '\u001b[10m',           # Main Font
+    # "FONT1": '\u001b[11m',           # Alternate Font n-10   NWS
+    # "FONT2": '\u001b[12m',           # Alternate Font n-10   NWS
+    # "FONT3": '\u001b[13m',           # Alternate Font n-10   NWS
+    # "FONT4": '\u001b[14m',           # Alternate Font n-10   NWS
+    # "FONT5": '\u001b[15m',           # Alternate Font n-10   NWS
+    # "FONT6": '\u001b[16m',           # Alternate Font n-10   NWS
+    # "FONT7": '\u001b[17m',           # Alternate Font n-10   NWS
+    # "FONT8": '\u001b[18m',           # Alternate Font n-10   NWS
+    # "FONT9": '\u001b[19m',           # Alternate Font n-10   NWS
+    # "FRAKTUR": '\u001b[20m',         # WTF?                 hardly ever supported
+    # "DUNDER": '\u001b[21m',          # Double Underline      likely 'BOLD OFF'
+    # "NORM": '\u001b[22m',            # Normal Weight
+    # "NO_IT": '\u001b[23m',           # Normal Angle          Italic off
+    # "NO_UND": '\u001b[24m',          # Normal Underline      Underline off
+    # "NOBLINK": '\u001b[25m',         # Blink Off
+    # "WTF": '\u001b[26m',             # Undefined ... no definition found ????
+    # "NOTINV": '\u001b[27m',          # Normal Inversion      Reverse off
+    # "REVEAL": '\u001b[28m',          # Conceal Off
+    # "NO_STRIKE": '\u001b[29m',       # Strikethrough off
+    # "FRAME": '\u001b[51m',           # Framed
+    # "CIRCLE": '\u001b[52m',          # Encircled
+    # "OVER": '\u001b[53m',            # Overlined
+    # "NO_FRAME": '\u001b[54m',        # Frame/Circle Off
+    # "NO_OVER": '\u001b[55m',         # Overline OFF
+    # "ID_UNDER": '\u001b[60m',        # ideogram underline
+    # "ID_DOUB": '\u001b[61m',         # ideogram double underline
+    # "ID_OVER": '\u001b[62m',         # ideogram overline
+    # "ID_DOVE": '\u001b[63m',         # ideogram double overline
+    # "ID_STRESS": '\u001b[64m',       # ideogram stress marking
+    # "ID_OFF": '\u001b[65m',          # ideogram attributes off
+}
 
 # Fills in the 256 set color codes
 #   => (0 to 231) colors in the format 'COLOR133'
@@ -511,7 +546,9 @@ Usage: text_colors {demo|version|help}
             color_gradient(42, 222, USAGE)
             # color_cycle(42, usage)
 
-print("\n\n")
+    print("\n\n")
+    print("python version (pyver): ", pyver())
+    print("python shell (py_shell): ", py_shell())
 
 # Resources:
 # https://stackoverflow.com/questions/287871/print-in-terminal-with-colors
