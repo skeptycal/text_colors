@@ -12,22 +12,21 @@ Last update: 05-21-2019 | 23:24:03
 
 ### The obligatory Python module to add CLI ANSI color and other escape code formatting features.
 
-Behold, the power of ANSI colors!
+> It seems like everyone who is working with the command line eventually finds a way to control the ansi colors and create their own prompt, so why not...
 
-```{.sourceCode .python}
->>> import text_colors
->>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
->>> r.status_code
-200
->>> r.headers['content-type']
-'application/json; charset=utf8'
->>> r.encoding
-'utf-8'
->>> r.text
-u'{"type":"User"...'
->>> r.json()
-{u'disk_usage': 368627, u'private_gists': 484, ...}
-```
+> I stand on the shoulders of giants!
+
+**_Behold, the power of ANSI colors!_**
+
+- can be used directly in python
+
+![python ansi color text sample](src/assets/py_ansi_text_sample.png)
+
+---
+
+- can be called from bash scripts
+
+![bash ansi color text sample](src/assets/pip.png)
 
 ## Installation
 
