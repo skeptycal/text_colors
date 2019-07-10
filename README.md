@@ -1,8 +1,10 @@
 # text_colors version 0.8.3
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)](https://app.netlify.com/sites/mystifying-keller-ab5658/deploys) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/skeptycal0275/skeptycal/1.svg?color=blue&label=Azure%20DevOps&style=popout)
+[![netlify badge](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)][netlify_link] [![Build Status](https://travis-ci.com/skeptycal/text_colors.svg?branch=master)][travis_link]
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+![PyPI - Status](https://img.shields.io/pypi/status/text_colors.svg) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout)
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/skeptycal.svg?label=%40skeptycal&style=social) ![GitHub followers](https://img.shields.io/github/followers/skeptycal.svg?style=social)
 
@@ -33,8 +35,7 @@ Last update: 05-21-2019 | 23:24:03
 ```bash
 
 ###############################################################################
-# text_colors : The obligatory Python training module to add CLI ANSI color
-and other escape code formatting features. (version 0.8.3)
+# text_colors : The obligatory Python training module to add CLI ANSI color and other escape code formatting features. (version 0.8.3)
 #
 # author    - Michael Treanor  <skeptycal@gmail.com>
 # copyright - 2019 (c) Michael Treanor
@@ -65,9 +66,6 @@ and other escape code formatting features. (version 0.8.3)
 #   - color_gradient() - Print using a calculated ANSI color gradient.
 #   - color_cycle() - Print by cycling through an ANSI color range.
 ###############################################################################
-
-
-
 
 ```
 
@@ -111,3 +109,8 @@ and other escape code formatting features. (version 0.8.3)
 
 9 directories, 24 files
 ```
+
+[netlify_link]: (https://app.netlify.com/sites/mystifying-keller-ab5658/deploys)
+[travis_link]: (https://travis-ci.com/skeptycal/text_colors)
+[azure]: (https://img.shields.io/azure-devops/build/skeptycal0275/skeptycal/1.svg?color=blue&label=Azure%20DevOps&style=popout)
+[pyver]: (https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout)

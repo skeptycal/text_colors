@@ -2,13 +2,22 @@
 # -*- encoding: utf-8 -*-
 """ text_colors version 0.8.3 """
 
-import text_colors
+from text_colors import pyver, py_shell, color_encode, color_print, color_cycle
 
-SHELL: str = text_colors.py_shell()
+
+SHELL: str = py_shell()
+PYVERSION: str = pyver()
+PURPLE: str = color_encode('PURPLEHAZE')
 
 
 def main():
+    print()
+    print('Python version is: ', PYVERSION)
+    print('Python shell is: ', SHELL)
+    color_print(PURPLE, 'Jimmi sang a fabulous song.')
+    color_cycle(17, 'CRazy sTuFF is craZY StufF.')
+    print()
+    print()
 
-    text_colors.color_print(text_colors.FG_DICT(
-        'PURPLEHAZE'), 'Jimmi sang a fabulous song.')
-    text_colors.c
+
+main()
