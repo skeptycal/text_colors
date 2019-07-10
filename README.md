@@ -1,6 +1,6 @@
 # text_colors version 0.8.3
 
-[![netlify badge](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)][netlify_link] [![Build Status](https://travis-ci.com/skeptycal/text_colors.svg?branch=master)][travis_link]
+[![netlify badge](https://api.netlify.com/api/v1/badges/416b8ca3-82db-470f-9adf-a6d06264ca75/deploy-status)](https://app.netlify.com/sites/mystifying-keller-ab5658/deploys) [![Build Status](https://travis-ci.com/skeptycal/text_colors.svg?branch=master)](https://travis-ci.com/skeptycal/text_colors)
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
@@ -26,91 +26,23 @@ Last update: 05-21-2019 | 23:24:03
 
 ---
 
+## Installation
+
+pip install text_colors
+
+---
+
 - can be called from bash scripts
 
 ![bash ansi color text sample](src/assets/pip.png)
 
-## Installation
-
-```bash
-
-###############################################################################
-# text_colors : The obligatory Python training module to add CLI ANSI color and other escape code formatting features. (version 0.8.3)
-#
-# author    - Michael Treanor  <skeptycal@gmail.com>
-# copyright - 2019 (c) Michael Treanor
-# license   - MIT <https://opensource.org/licenses/MIT>
-# github    - https://www.github.com/skeptycal
-#
-# Usage: text_colors {demo|version|help}
-
-#   Parameters:
-#       demo, -d, --demo        -- examples of features
-#       version, -v, --version  -- display version information
-#       help, -h, --help        -- display usage and information
-
-###############################################################################
-#
-# (There seems to be a tradition, in the spirit of 'Hello World,' to write some
-# code that makes use of ANSI codes to color the CLI output.
-# Since I have been working with BASH scripts lately, and working with Python
-# it seems like a fun thing to do!)
-#
-# Importing this module gives access to the following:
-#   - py_shell() - Returns string containing current python shell name.
-#   - FG_DICT - dictionary of ANSI foreground color codes
-#   - BG_DICT - dictionary of ANSI background color codes
-#   - FLAGS_DICT - dictionary of ANSI formatting codes
-#   - color_encode() - Returns encoded ANSI text string from components.
-#   - color_print() - Print using ANSI color codes.
-#   - color_gradient() - Print using a calculated ANSI color gradient.
-#   - color_cycle() - Print by cycling through an ANSI color range.
-###############################################################################
-
-```
-
 ---
 
-```bash
-.
-├── MANIFEST.in
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-├── __init__.py
-├── bak
-│   ├── README.md.bak
-│   ├── codecov.yml.bak
-│   ├── pipfile.bak
-│   └── requirements.txt.bak
-├── build
-│   ├── bdist.macosx-10.14-x86_64
-│   ├── bdist.macosx-10.9-x86_64
-│   ├── scripts-3.6
-│   │   └── text_colors.py
-│   ├── scripts-3.7
-│   │   └── text_colors.py
-│   └── scripts-3.8
-│       └── text_colors.py
-├── codecov.yml
-├── dev-requirements.txt
-├── dist
-│   ├── text_colors-0.8.3-py3-none-any.whl
-│   ├── text_colors-0.8.3-py3.7.egg
-│   └── text_colors-0.8.3.tar.gz
-├── requirements.txt
-├── setup.py
-├── text_colors.egg-info
-│   ├── PKG-INFO
-│   ├── SOURCES.txt
-│   ├── dependency_links.txt
-│   └── top_level.txt
-└── text_colors.py
+Directory Tree
 
-9 directories, 24 files
-```
+![directory tree map](src/assets/dir_tree.png)
 
-[netlify_link]: (https://app.netlify.com/sites/mystifying-keller-ab5658/deploys)
-[travis_link]: (https://travis-ci.com/skeptycal/text_colors)
+[netlify_link]:
+[travis_link]:
 [azure]: (https://img.shields.io/azure-devops/build/skeptycal0275/skeptycal/1.svg?color=blue&label=Azure%20DevOps&style=popout)
 [pyver]: (https://img.shields.io/pypi/pyversions/flask.svg?color=Yellow&label=Python&style=popout)
