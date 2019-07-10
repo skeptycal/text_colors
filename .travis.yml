@@ -30,13 +30,13 @@ install:
   # Dev requirements
   - pip install -r dev-requirements.txt
 # command to run tests
-script:
-  - pytest
-  # Fail if any of these files have warnings
-  - shellcheck myscripts/*.sh
-after_success:
-  # Upload coverage data to codecov
-  - codecov
+# script:
+#   - pytest
+#   # Fail if any of these files have warnings
+#   - shellcheck myscripts/*.sh
+# after_success:
+#   # Upload coverage data to codecov
+#   - codecov
 notifications:
   # irc:
   #   channels: "irc.freenode.org#xxxxx"
