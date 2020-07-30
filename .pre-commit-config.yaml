@@ -1,90 +1,93 @@
-###############################################################################
-# pc : pre-commit and auto deploy on macOS (version 1.4.3)
-#
-# author    - Michael Treanor  <skeptycal@gmail.com>
-# copyright - 2019 (c) Michael Treanor
-# license   - MIT <https://opensource.org/licenses/MIT>
-# github    - https://www.github.com/skeptycal
-#
-# Usage: pc {init|reset|version|help}
-#
-#   Parameters:
-#       [init, -i, --init]        -- install and initialize
-#       [commit, -m] MESSAGE      -- git commit and push with MESSAGE
-#       [reset, -r, --reset]      -- reset initial repo files (with backup)
-#       [version, -v, --version]  -- display version information
-#       [help, -h, --help]        -- display usage and information
-#
-#   .pre-commit-template.yaml must be in current directory
-#       If not, a generic template will be created
-#   .pre-commit-bak.yaml will be created (if possible)
-#       from .pre-commit-config.yaml as backup
-#   .pre-commit-config.yaml will be *overwritten*
-#       and updated to current master sha from GitHub
-###############################################################################
-
-# Run this script if changes to the pre-commit or yaml configuration are added.
-
-# Please make changes directly to the 'template' file:
-#     <.pre\-commit-template.yaml>
-# and run the script 'pc' to update the yaml to current versioning.
-
-# Please do not make changes directly to the 'config' file. The 'config' file:
-#     <.pre-commit-config.yaml>
-#   is created and updated by the 'pc' script automatically in order to maintain
-#   the correct, current versioning from git (master sha) so changes to the
-#   commit file will be overwritten when updating.
-###############################################################################
-
 # Pre-commit Sample yaml template
 default_language_version:
-  python: python3.7
+    python: python3.7
 default_stages: [commit, push]
-exclude: "^$"
+exclude: '^$'
 fail_fast: false
 # @see http://pre-commit.com/
 repos:
-  - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
-    hooks:
-      - id: check-yaml
-        files: \.(yaml|yml)$
-      - id: check-added-large-files
-      - id: check-byte-order-marker
-      # - id: check-docstring-first
-      - id: check-case-conflict
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-symlinks
-      #   -   id: detect-aws-credentials
-      - id: detect-private-key
-      - id: end-of-file-fixer
-      # - id: flake8
-      #   args: [
-      #     '--max-line-length=79',
-      #     '--ignore=E501'
-      #   ]
-      - id: pretty-format-json
-      - id: requirements-txt-fixer
-      - id: trailing-whitespace
-  # Python settings ... replace as needed
-  # - repo: git://github.com/pre-commit/mirrors-pylint
-  #   sha: master
-  #   hooks:
-  #       - id: pylint
-# PHP settings ... replace as needed
-# - repo: git@github.com:hootsuite/pre-commit-php.git
-#   sha: 1.1.0
-#   hooks:
-#   - id: php-lint-all
-#   - id: php-unit
-#   - id: php-cs
-#     files: \.(php)$
-#     args: [--standard=PSR1 -p]
-#   - id: php-cbf
-#     files: \.(php)$
-#     args: [--standard=PSR1 -p]
-# The tool will fail a build when it has made changes to the staged files. This allows a developer to do a git diff and examine the changes that it has made. Remember that you may omit this if needed with a SKIP=php-cs-fixer git commit.
-#   - id: php-cs-fixer
-#     files: \.(php)$
-#     args: [--level=PSR2]
+    - repo: git://github.com/pre-commit/pre-commit-hooks
+      rev: v2.2.3
+      hooks:
+          - id: check-yaml
+            files: \.(yaml|yml)$
+          - id: check-added-large-files
+          - id: check-byte-order-marker
+          # - id: check-docstring-first
+          - id: check-case-conflict
+          - id: check-json
+          - id: check-merge-conflict
+          - id: check-symlinks
+          #   -   id: detect-aws-credentials
+          - id: detect-private-key
+          - id: end-of-file-fixer
+          # - id: flake8
+          #   args: [
+          #     '--max-line-length=79',
+          #     '--ignore=E501'
+          #   ]
+          - id: pretty-format-json
+          - id: requirements-txt-fixer
+          - id: trailing-whitespace
+
+# *****************************************************************************
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v3.1.0
+      hooks:
+            - id: check-added-large-files
+            - id: check-byte-order-marker
+            - id: check-case-conflict
+            # - id: check-docstring-first
+            - id: check-json
+            - id: check-merge-conflict
+            - id: check-symlinks
+            - id: check-yaml
+                files: \.(yaml|yml)$
+            - id: debug-statements
+            - id: detect-aws-credentials
+            - id: detect-private-key
+            - id: double-quote-string-fixer
+            - id: end-of-file-fixer
+            - id: name-tests-test
+            - id: pretty-format-json
+            - id: requirements-txt-fixer
+            - id: requirements-txt-fixer
+            - id: trailing-whitespace
+    - repo: https://gitlab.com/pycqa/flake8
+      rev: 3.8.3
+      hooks:
+          - id: flake8
+            additional_dependencies: [flake8-typing-imports==1.7.0]
+            args: ['--max-line-length=79', '--ignore=E501']
+    - repo: https://github.com/pre-commit/mirrors-autopep8
+      rev: v1.5.3
+      hooks:
+          - id: autopep8
+    - repo: https://github.com/pre-commit/pre-commit
+      rev: v2.6.0
+      hooks:
+          - id: validate_manifest
+    - repo: https://github.com/asottile/reorder_python_imports
+      rev: v2.3.2
+      hooks:
+          - id: reorder-python-imports
+            args: [--py3-plus]
+    - repo: https://github.com/asottile/pyupgrade
+      rev: v2.7.1
+      hooks:
+          - id: pyupgrade
+            args: [--py36-plus]
+    - repo: https://github.com/asottile/add-trailing-comma
+      rev: v2.0.1
+      hooks:
+          - id: add-trailing-comma
+            args: [--py36-plus]
+    - repo: https://github.com/asottile/setup-cfg-fmt
+      rev: v1.11.0
+      hooks:
+          - id: setup-cfg-fmt
+    - repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v0.782
+      hooks:
+          - id: mypy

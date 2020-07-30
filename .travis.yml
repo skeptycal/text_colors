@@ -1,23 +1,25 @@
 # Travis CI script
 language: python
 python:
-  # - "2.7"
-  - "3.6"
-  # - "pypy3.5"
+    # - "2.7"
+    - 3.6
+    - 3.7
+    - 3.8
+    # - "pypy3.5"
 install:
-  - pip install -e .
-  # Limit setuptools due to Issues(tm).
-  - pip install "setuptools<34"
-  # Dev requirements
-  - pip install -r dev-requirements.txt
-  # - pip install -r requirements.txt
+    - pip install -e .
+    # Limit setuptools due to Issues(tm).
+    - pip install "setuptools<34"
+    # Dev requirements
+    - pip install -r dev-requirements.txt
+    # - pip install -r requirements.txt
 script:
-  # - pytest
-  - python setup.py build
+    # - pytest
+    - python setup.py build
 after_success:
-  # Upload coverage data to codecov
-  - codecov
+    # Upload coverage data to codecov
+    - codecov
 notifications:
-  # on_success: change
-  # on_failure: change
-  email: ["skeptycal@gmail.com"]
+    # on_success: change
+    # on_failure: change
+    email: ['skeptycal@gmail.com']
